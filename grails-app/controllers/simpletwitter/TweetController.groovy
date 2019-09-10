@@ -1,24 +1,33 @@
 package simpletwitter
 
+/** made a call from the service instead of the db
+
+ */
+/**
+ * handles query from the services for all tweets
+ */
 class TweetController {
+    def TweetService
 
     def index() {
-        redirect "list"
+        redirect action:"listAllTweets"
     }
     def create() {
-
     }
     def show = {
-        def tweet = Tweet.get(params.id)
+        TweetService.get()
         [tweet:tweet]
     }
-    def list = {
-        def tweet = Tweet.list()
-        [tweet:tweet]
+    def listAllTweets = {
+        TweetService.list()
+//        [tweet:tweet]
     }
-    def delete = {
-        def tweet = Tweet.get(params.id)
-        tweet.delete()
+    def deleteTweet = {
+        TweetService.get(id)
+        TweetService.delete()
+    }
+    def saveTweet = {
+        TweetService.save(id)
     }
     def reTweet() {
 
