@@ -9,7 +9,7 @@ class TweetService {
     def get(id) {
         tweet.get()
     }
-    def list = {
+    def list() {
         tweet.list()
     }
     def show(id) {
@@ -19,8 +19,11 @@ class TweetService {
         tweet.get()
         tweet.delete(id)
     }
-    def save(tweet) {
+    Tweet save(String message) {
+        Tweet tweet = new Tweet()
+        tweet.message = message
         tweet.save()
+        return tweet
     }
 
 }

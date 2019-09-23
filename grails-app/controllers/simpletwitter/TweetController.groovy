@@ -7,28 +7,30 @@ package simpletwitter
  * handles query from the services for all tweets
  */
 class TweetController {
-    def TweetService
+    def tweetService
 
     def index() {
         redirect action:"listAllTweets"
     }
     def create() {
     }
-    def show = {
-        TweetService.get()
-        [tweet:tweet]
-    }
-    def listAllTweets = {
-        TweetService.list()
+    def show() {
+        tweetService.get()
 //        [tweet:tweet]
     }
-    def deleteTweet = {
-        TweetService.get(id)
-        TweetService.delete()
+    def listAllTweets() {
+        tweetService.list()
+//        [tweet:tweet]
     }
-    def saveTweet = {
-        TweetService.save(id)
+    def deleteTweet() {
+        tweetService.get(id)
+        tweetService.delete()
     }
+    def saveTweet() {
+        def tweet = tweetService.save(params.message)
+        [tweet:tweet]
+    }
+
     def reTweet() {
 
     }
